@@ -8,6 +8,7 @@ from .misc import (_compute_error_ratio,
                    _optimal_step_size)
 from .misc import Perturb
 from .solvers import AdaptiveStepsizeEventODESolver
+from common import DTYPE
 
 
 _ButcherTableau = collections.namedtuple('_ButcherTableau', 'alpha, beta, c_sol, c_error')
@@ -152,7 +153,7 @@ class RKAdaptiveStepsizeODESolver(AdaptiveStepsizeEventODESolver):
                  ifactor=10.0,
                  dfactor=0.2,
                  max_num_steps=2 ** 31 - 1,
-                 dtype=torch.float64,
+                 dtype=DTYPE,
                  **kwargs):
         super(RKAdaptiveStepsizeODESolver, self).__init__(dtype=dtype, y0=y0, **kwargs)
 

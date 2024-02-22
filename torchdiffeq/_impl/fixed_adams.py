@@ -6,6 +6,8 @@ from .solvers import FixedGridODESolver
 from .misc import _compute_error_ratio, _linf_norm
 from .misc import Perturb
 from .rk_common import rk4_alt_step_func
+from common import DTYPE
+
 
 _BASHFORTH_COEFFICIENTS = [
     [],  # order 0
@@ -146,9 +148,9 @@ _DIVISOR = [
     31384184832000, 62768369664000, 32011868528640000, 64023737057280000, 51090942171709440000, 102181884343418880000
 ]
 
-_BASHFORTH_DIVISOR = [torch.tensor([b / divisor for b in bashforth], dtype=torch.float64)
+_BASHFORTH_DIVISOR = [torch.tensor([b / divisor for b in bashforth], dtype=DTYPE)
                       for bashforth, divisor in zip(_BASHFORTH_COEFFICIENTS, _DIVISOR)]
-_MOULTON_DIVISOR = [torch.tensor([m / divisor for m in moulton], dtype=torch.float64)
+_MOULTON_DIVISOR = [torch.tensor([m / divisor for m in moulton], dtype=DTYPE)
                     for moulton, divisor in zip(_MOULTON_COEFFICIENTS, _DIVISOR)]
 
 _MIN_ORDER = 4

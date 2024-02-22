@@ -1,5 +1,6 @@
 import torch
 from .rk_common import _ButcherTableau, RKAdaptiveStepsizeODESolver
+from common import DTYPE
 
 
 A = [1 / 18, 1 / 12, 1 / 8, 5 / 16, 3 / 8, 59 / 400, 93 / 200, 5490023248 / 9719169821, 13 / 20, 1201146811 / 1299019798, 1, 1, 1]
@@ -61,11 +62,11 @@ C_mid[12] = (- 41.7923486424390588923 * (h**5) + 116.2662185791119533462 * (h**4
 C_mid[13] = (20.3006925822100825485 * (h**5) - 53.9020777466385396792 * (h**4) + 50.2558364226176017553 * (h**3) - 19.0082099341608028453 * (h**2) + 2.3537586759714983486 * h) / (1 / h)
 
 
-A = torch.tensor(A, dtype=torch.float64)
-B = [torch.tensor(B_, dtype=torch.float64) for B_ in B]
-C_sol = torch.tensor(C_sol, dtype=torch.float64)
-C_err = torch.tensor(C_err, dtype=torch.float64)
-_C_mid = torch.tensor(C_mid, dtype=torch.float64)
+A = torch.tensor(A, dtype=DTYPE)
+B = [torch.tensor(B_, dtype=DTYPE) for B_ in B]
+C_sol = torch.tensor(C_sol, dtype=DTYPE)
+C_err = torch.tensor(C_err, dtype=DTYPE)
+_C_mid = torch.tensor(C_mid, dtype=DTYPE)
 
 _DOPRI8_TABLEAU = _ButcherTableau(alpha=A, beta=B, c_sol=C_sol, c_error=C_err)
 
