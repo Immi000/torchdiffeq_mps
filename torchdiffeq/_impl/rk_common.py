@@ -8,7 +8,7 @@ from .misc import (_compute_error_ratio,
                    _optimal_step_size)
 from .misc import Perturb
 from .solvers import AdaptiveStepsizeEventODESolver
-from common import DTYPE
+from .common import DTYPE
 
 
 _ButcherTableau = collections.namedtuple('_ButcherTableau', 'alpha, beta, c_sol, c_error')

@@ -6,7 +6,7 @@ from .solvers import FixedGridODESolver
 from .misc import _compute_error_ratio, _linf_norm
 from .misc import Perturb
 from .rk_common import rk4_alt_step_func
-from common import DTYPE
+from .common import DTYPE
 
 
 _BASHFORTH_COEFFICIENTS = [
